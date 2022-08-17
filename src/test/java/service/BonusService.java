@@ -15,6 +15,14 @@ public class BonusService {
         br.com.alura.tdd.service.BonusService serviceb = new br.com.alura.tdd.service.BonusService();
         BigDecimal bonus = serviceb.calcularBonus(new Funcionario("nome", LocalDate.now(), new BigDecimal("12000")));
 
-        assertEquals(BigDecimal.ZERO, bonus);
+        assertEquals(new BigDecimal("0.00"), bonus);
+    }
+
+    @Test
+    public void deveriaBonusSerDe10PorcentoDoSalario() {
+        br.com.alura.tdd.service.BonusService serviceb = new br.com.alura.tdd.service.BonusService();
+        BigDecimal bonus = serviceb.calcularBonus(new Funcionario("nome", LocalDate.now(), new BigDecimal("2500")));
+
+        assertEquals(new BigDecimal("250.00"), bonus);
     }
 }
