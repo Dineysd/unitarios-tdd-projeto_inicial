@@ -2,6 +2,7 @@ package service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -16,8 +17,15 @@ public class BonusServiceTest {
     public void deveLancaExceptionParaSalarioAcimaDeDezMilSemBonus() {
         BonusService service = new BonusService();
 
-        assertThrows( IllegalArgumentException.class, 
-        () -> service.calcularBonus(new Funcionario("nome", LocalDate.now(), new BigDecimal("12000"))));
+       // assertThrows( IllegalArgumentException.class, 
+       // () -> service.calcularBonus(new Funcionario("nome", LocalDate.now(), new BigDecimal("12000"))));
+
+       try {
+        service.calcularBonus(new Funcionario("nome", LocalDate.now(), new BigDecimal("12000")));
+        fail("Caso não der exception, falhe");
+       } catch (Exception e) {
+        assertEquals("Funcionario com salario acima de 10000 não possui bonus", e.getMessage());
+       }
 
     }
 
