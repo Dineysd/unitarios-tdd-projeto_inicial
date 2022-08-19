@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +23,11 @@ public class ReajusteServiceTest {
     private void inicializar(){
         service = new ReajusteService();
         funcionario = new Funcionario("Carlos", LocalDate.now(), new BigDecimal("1000"));
+    }
+
+    @AfterEach
+    private void finalizar(){
+        System.out.println("Fim do teste");
     }
 
     @Test
