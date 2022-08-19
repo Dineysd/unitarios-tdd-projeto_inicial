@@ -23,6 +23,9 @@ public class ReajusteService {
         } */
 
         //Depois
+        if(desempenho.getPercentual().equals(BigDecimal.ZERO)){
+            throw new IllegalArgumentException("Desempenho ruim, sem reajuste!");
+        }
         getCalcularReajuste(funcionario, desempenho.getPercentual());
 
         return funcionario.getSalario().setScale(2, RoundingMode.HALF_UP);

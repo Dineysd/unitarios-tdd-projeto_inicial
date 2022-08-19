@@ -1,6 +1,7 @@
 package service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,6 +13,20 @@ import br.com.alura.tdd.modelo.Funcionario;
 import br.com.alura.tdd.service.ReajusteService;
 
 public class ReajusteServiceTest {
+
+
+    @Test
+    public void deveLancarUmaExceptionCasoDesempenhoForRuim(){
+        ReajusteService service = new ReajusteService();
+        Funcionario funcionario = new Funcionario("Carlos", LocalDate.now(), new BigDecimal("1000"));
+        try {
+            service.reajusteSalarioPor(funcionario, Desempenho.RUIM);
+            fail("caso não de exception, falhe!");
+        } catch (Exception e) {
+            assertEquals("Desempenho ruim, sem reajuste!", e.getMessage());
+        }
+        
+    }
      
     @Test
     public void deveReajusteSerDeTresPorcentoCasoDesempenhoForADesejar(){

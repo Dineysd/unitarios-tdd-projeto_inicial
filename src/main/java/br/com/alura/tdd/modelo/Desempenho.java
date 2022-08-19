@@ -18,6 +18,12 @@ public enum Desempenho {
         public BigDecimal getPercentual() {
             return new BigDecimal("0.30");
         }
+    }, RUIM {
+        @Override
+        public BigDecimal getPercentual() {
+            // TODO Auto-generated method stub
+            return BigDecimal.ZERO;
+        }
     };
 
 
